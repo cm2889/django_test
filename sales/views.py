@@ -49,7 +49,7 @@ def userList(request):
             user_list=models.SalesPerson.objects.all()
             context = {'user_list': user_list}
     return render(request,'userList.html',context)
-#userList
+#categoryList
 def categoryList(request):
     category_list=models.Category.objects.all()
     context = {'category_list': category_list}
@@ -57,6 +57,20 @@ def categoryList(request):
         category_name=request.POST['category_name']
         models.Category.objects.create(category_name=category_name)
     return render(request,'category/index.html',context)
+#category delete
+def category_delete(request,pk):
+    models.Category.objects.filter(id=pk).delete()
+    return redirect('/category-list')
+#Category Edit
+def category_edit(request,pk):
+    Category=models.Category.objects.get(id=pk)
+    if(request.method=="POST"):
+        category_name = request.POST.get('category_name')
+        status = True if request.POST.get('status') else False
+        models.Category.objects.filter(id=pk).update(category_name=category_name,status=status)
+        return redirect('/category-list')
+
+    return render(request,'category/edit.html',{'Category':Category})
 
 
 

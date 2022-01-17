@@ -116,7 +116,8 @@
                         <td>{{category.id}}</td>
                         <td>{{category.category_name}}</td>
                         <td>{{category.status}}</td>
-                        <td><a href="">Edit</a><a href="">Delete</a></td>
+                        <td><a href="category_edit/{{category.id}}">Edit</a>
+                            <a href="category_delete/{{category.id}}">Delete</a></td>
                     </tr>
                     {% endfor %}
                     
