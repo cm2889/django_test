@@ -1,0 +1,77 @@
+.card-area {
+    max-width: 320px;
+    width: 100%;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0px 1px 5px #ddd;
+}
+.card-area h2{
+padding:0;
+margin:0;
+text-align:center;
+}
+.card-area .form-group {
+    clear: both;
+    overflow: hidden;
+}
+.card-area .form-group label {
+    display: block;
+    width: 100%;
+    line-height: 25px;
+    margin-top: 10px;
+}
+.card-area .form-group input {
+    width: calc(100% - 33px);
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 30px;
+    padding: 0 15px;
+}
+.form-group.login {
+    text-align: center;
+}
+.card-area .form-group input[type="submit"] {
+    width: 120px;
+    margin: 20px auto 10px;
+    padding: 8px 5px;
+    height: auto;
+}
+.form-group.login {
+    text-align: center;
+}
+.login .login,
+.login .Register {
+    display: block;
+    color: #070d2a;
+}
+.card-area .form-group input {
+    width: calc(100%);
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 37px;
+    padding: 0 15px;
+}
+.category-section .card-area {
+    width: 50%;
+    margin: 50px 0;
+    max-width: 620px;
+}
+.category-section .form-group.login {
+    text-align: right;
+}
+.edit-category .form-group input[type="checkbox"] {
+    width: 60px;
+    height: 20px;
+    margin-top: 15px;
+    line-height: 5px;
+    position: relative;
+    top: 4px;
+    left: 0;
+}
+.category-section .edit-category.card-area {
+    width: 50%;
+    margin: 50px auto;
+    max-width: 620px;
+}
