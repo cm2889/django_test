@@ -9,3 +9,12 @@ class SalesPerson(models.Model):
 
     def __str__ (self):
         return self.username
+class Category(models.Model):
+    category_name=models.CharField(max_length=255)
+    status=models.BooleanField(default=True)
+    created=models.DateTimeField(auto_now_add=True)
+    deleted=models.BooleanField(default=False)
+    updated_by=models.IntegerField(null=True)
+
+    def __str__ (self):
+        return self.name

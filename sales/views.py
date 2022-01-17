@@ -41,7 +41,7 @@ def login(request):
     else:
         return render(request,'login.html')
 
-#Login
+#userList
 def userList(request):
     if(request.method=="GET"):
             #student_list=models.Students.objects.all() #dor all information
@@ -49,3 +49,14 @@ def userList(request):
             user_list=models.SalesPerson.objects.all()
             context = {'user_list': user_list}
     return render(request,'userList.html',context)
+#userList
+def categoryList(request):
+    category_list=models.Category.objects.all()
+    context = {'category_list': category_list}
+    if request.method=="POST":
+        category_name=request.POST['category_name']
+        models.Category.objects.create(category_name=category_name)
+    return render(request,'category/index.html',context)
+
+
+
