@@ -10,7 +10,7 @@
                 </ol>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6">
-            <a class="pull-right" href="http://" target="_blank" rel="noopener noreferrer" style="position: relative;top: 55%;">Add Complain</a>
+            <a class="pull-right button_green" href="http://" target="_blank" rel="noopener noreferrer" style="position: relative;top: 55%;">Add Complain</a>
         </div>
     </div>
     <div class="card mb-4">
@@ -39,8 +39,8 @@
                     <td>{{complain.id}}</td>
                     <td>{{complain.details}}</td>
                     <td>{{complain.status}}</td>
-                    <td><a href="complain_edit/{{complain.id}}">Edit</a>
-                        <a href="complain_delete/{{complain.id}}">Delete</a></td>
+                    <td><a href="complain_edit/{{complain.id}}"><i class="far fa-edit"></i></a>
+                        <a href="complain_delete/{{complain.id}}"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
