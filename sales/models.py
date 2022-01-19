@@ -14,7 +14,19 @@ class Category(models.Model):
     status=models.BooleanField(default=True)
     created=models.DateTimeField(auto_now_add=True)
     deleted=models.BooleanField(default=False)
-    updated_by=models.IntegerField(null=True)
+    updated_at=models.DateTimeField(auto_now_add=False,blank=True,null=True)
 
     def __str__ (self):
-        return self.name
+        return self.category_name
+ #Product MOdel
+class Product(models.Model):
+     category=models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+     product_web_name=models.CharField(max_length=255)
+     product_code=models.CharField(max_length=255)
+     status=models.BooleanField(default=True)
+     created=models.DateTimeField(auto_now_add=True)
+     deleted=models.BooleanField(default=False)
+     updated_at=models.DateTimeField(auto_now_add=False,blank=True,null=True)
+
+     def __str__ (self):
+         return self.product_web_name

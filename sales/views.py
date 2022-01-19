@@ -2,6 +2,7 @@ from pyexpat import model
 from django.shortcuts import render,redirect
 import hashlib
 from . import models
+import datetime
 
 # Create your views here.
 def login(request):
@@ -64,13 +65,46 @@ def category_delete(request,pk):
 #Category Edit
 def category_edit(request,pk):
     Category=models.Category.objects.get(id=pk)
+
     if(request.method=="POST"):
         category_name = request.POST.get('category_name')
         status = True if request.POST.get('status') else False
-        models.Category.objects.filter(id=pk).update(category_name=category_name,status=status)
+        current_time=datetime.datetime.now()
+        models.Category.objects.filter(id=pk).update(category_name=category_name,status=status,updated_at=current_time)
         return redirect('/category-list')
 
     return render(request,'category/edit.html',{'Category':Category})
+ #productList
+def productList(request):
+    category_list=models.Category.objects.all()
+    product_List=models.Product.objects.all()
+    context = {'product_List': product_List,'category_list':category_list}
+    if request.method=="POST":
+         category_id=request.POST['category_id']
+         product_web_name=request.POST['product_web_name']
+         product_code=request.POST['product_code']
+         models.Product.objects.create(category_id=category_id,product_web_name=product_web_name,product_code=product_code)
+    return render(request,'product/index.html',context)
+#product Edit
+def product_edit(request,pk):
+    Product=models.Product.objects.get(id=pk)
+    category_list=models.Category.objects.all()
 
+    if(request.method=="POST"):
+        category_id = request.POST.get('category_id')
+        product_web_name = request.POST.get('product_web_name')
+        product_code = request.POST.get('product_code')
+        status = True if request.POST.get('status') else False
+        current_time=datetime.datetime.now()
+        models.Product.objects.filter(id=pk).update(category_id=category_id,
+        product_web_name=product_web_name,product_code=product_code,
+        status=status,updated_at=current_time)
+        return redirect('/product-list')
+
+    return render(request,'product/edit.html',{'Product':Product,'category_list':category_list})
+#product delete
+def product_delete(request,pk):
+    models.Category.Product.filter(id=pk).delete()
+    return redirect('/product-list')
 
 
