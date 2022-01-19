@@ -11714,3 +11714,34 @@ body {
 .pull-right{
   float: right;
 }
+.Complain h2 {
+  padding-left: 30px;
+  margin: 50px 0;
+}
+.Complain .tex-label {
+  width: 200px;
+  float: left;
+  padding-left: 30px;
+}
+.Complain .tex-label label{
+  width: 100%;
+  display: block;
+}
+.Complain .content_area {
+  width: calc(85% - 210px);
+  border: 0px solid #ddd;
+  outline: none;
+  padding: 0;
+  float: left;
+}
+.Complain .content_area textarea{
+  height: 200px;
+}
+.Complain .content_area textarea,
+.Complain .content_area input[type="text"]{
+  width: 100%;
+  border: 1px solid #ddd;
+}
+.Complain .form-group.buttn{
+  margin: 50px 0;
+}
