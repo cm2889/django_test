@@ -14,4 +14,7 @@ urlpatterns = [
     path('product-list',views.productList),
     path('product_edit/<int:pk>',views.product_edit,name='edit'),
     path('product_delete/<int:pk>',views.product_delete,name='delete'),
+    #Complain
+    path('complain-list',views.complainList),
+    path('complain-create',views.complainCreate),
 ]

@@ -1,0 +1,53 @@
+{% include "header.html" %}
+
+<div class="container-fluid px-4">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <h2 class="mt-4">Categories </h2>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Tables</li>
+                </ol>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <a class="pull-right" href="http://" target="_blank" rel="noopener noreferrer" style="position: relative;top: 55%;">Add Complain</a>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            {% if complain_List %}
+            <table id="datatablesSimple">
+                <thead>
+                <tr>
+                    <th>SL No</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>SL No</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for complain in complain_List %}
+                <tr>
+                    <td>{{complain.id}}</td>
+                    <td>{{complain.details}}</td>
+                    <td>{{complain.status}}</td>
+                    <td><a href="category_edit/{{complain.id}}">Edit</a>
+                        <a href="category_delete/{{complain.id}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %}

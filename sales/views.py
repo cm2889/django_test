@@ -106,5 +106,17 @@ def product_edit(request,pk):
 def product_delete(request,pk):
     models.Category.Product.filter(id=pk).delete()
     return redirect('/product-list')
+#Complain List
+def complainList(request):
 
+    complain_List=models.Complain.objects.all()
+    context = {'complain_List': complain_List}
+    return render(request,'complain/index.html',context)
+
+#Complain Create
+def complainCreate(request):
+    if(request.method=="POST"):
+        details=request.POST['details']
+        models.Complain.objects.create(details=details)
+    return render(request,'complain/create.html')
 
