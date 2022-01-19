@@ -119,4 +119,20 @@ def complainCreate(request):
         details=request.POST['details']
         models.Complain.objects.create(details=details)
     return render(request,'complain/create.html')
+#complain Edit
+def complain_edit(request,pk):
+    Complain=models.Complain.objects.get(id=pk)
 
+    if(request.method=="POST"):
+        details = request.POST.get('details')
+        status = True if request.POST.get('status') else False
+        current_time=datetime.datetime.now()
+        models.Complain.objects.filter(id=pk).update(details=details,
+        status=status,updated_at=current_time)
+        return redirect('/dashboard/complain-list')
+
+    return render(request,'complain/edit.html',{'Complain':Complain})
+#complain delete
+def complain_delete(request,pk):
+    models.Complain.objects.filter(id=pk).delete()
+    return redirect('/dashboard/complain-list')

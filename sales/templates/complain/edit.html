@@ -1,0 +1,22 @@
+
+{% include "header.html" %}
+
+<div class="card-area edit-category">
+    <h2>Update Category</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="details">Details</label>
+            <input class="form-controls" type="text" id="details" name="details" placeholder=" Category name" value="{{Complain.details}}"/>
+        </div>
+        <div class="form-group">Status <input type="checkbox" id="gender" name="status"  {% if Complain.status == True %} checked {% endif %} >
+        </div>
+        <div class="form-group login">
+            <input type="submit" name="submit" value="Update"/>
+        </div>
+    </form>
+</div>
+
+{% include "footer.html" %}
+
+

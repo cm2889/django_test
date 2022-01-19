@@ -17,4 +17,6 @@ urlpatterns = [
     #Complain
     path('complain-list',views.complainList),
     path('complain-create',views.complainCreate),
+    path('complain_edit/<int:pk>',views.complain_edit,name='edit'),
+    path('complain_delete/<int:pk>',views.complain_delete,name='delete'),
 ]
