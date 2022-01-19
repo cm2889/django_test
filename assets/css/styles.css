@@ -11747,6 +11747,7 @@ body {
   width: 100%;
   border: 1px solid #ddd;
   padding: 20px;
+  outline: none;
 }
 .Complain .form-group.buttn{
   margin: 50px 0;
