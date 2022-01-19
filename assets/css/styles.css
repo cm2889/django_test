@@ -11746,6 +11746,7 @@ body {
 .Complain .content_area input[type="text"]{
   width: 100%;
   border: 1px solid #ddd;
+  padding: 20px;
 }
 .Complain .form-group.buttn{
   margin: 50px 0;
