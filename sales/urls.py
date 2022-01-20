@@ -19,4 +19,8 @@ urlpatterns = [
     path('complain-create',views.complainCreate),
     path('complain_edit/<int:pk>',views.complain_edit,name='edit'),
     path('complain_delete/<int:pk>',views.complain_delete,name='delete'),
+    path('complainType-list',views.complainTypeList),
+    path('complainType-create',views.complainTypeCreate),
+    path('complainType_edit/<int:pk>',views.complainType_edit,name='edit'),
+    path('complainType_delete/<int:pk>',views.complainType_delete,name='delete'),
 ]

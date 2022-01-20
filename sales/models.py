@@ -30,10 +30,19 @@ class Product(models.Model):
 
      def __str__ (self):
          return self.product_web_name
-#Product Complain
+# Complain
+class ComplainType(models.Model):
+     name=models.CharField(max_length=255)
+     status=models.BooleanField(default=True)
+     created=models.DateTimeField(auto_now_add=True)
+     deleted=models.BooleanField(default=False)
+     updated_at=models.DateTimeField(auto_now_add=False,blank=True,null=True)
+
 class Complain(models.Model):
+     complainType=models.ForeignKey(ComplainType, on_delete=models.DO_NOTHING)
      details=models.TextField()
      status=models.BooleanField(default=True)
      created=models.DateTimeField(auto_now_add=True)
      deleted=models.BooleanField(default=False)
      updated_at=models.DateTimeField(auto_now_add=False,blank=True,null=True)
+

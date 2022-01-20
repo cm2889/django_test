@@ -3,25 +3,24 @@
 <div class="container-fluid px-4">
     <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6">
-            <h2 class="mt-4">Complain </h2>
+            <h2 class="mt-4">Complain Tpe </h2>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                     <li class="breadcrumb-item active">Tables</li>
                 </ol>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6">
-            <a class="pull-right button_green" href="/dashboard/complain-create" target="_blank" rel="noopener noreferrer" style="position: relative;top: 55%;">Add Complain</a>
+            <a class="pull-right button_green" href="/dashboard/complainType-" target="_blank" rel="noopener noreferrer" style="position: relative;top: 55%;">Add Complain</a>
         </div>
     </div>
     <div class="card mb-4">
         <div class="card-body">
-            {% if complain_List %}
+            {% if complain_type_List %}
             <table id="datatablesSimple">
                 <thead>
                 <tr>
                     <th>SL No</th>
-                    <th>Type of Complain</th>
-                    <th>Details</th>
+                    <th>Name</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -29,18 +28,17 @@
                 <tfoot>
                 <tr>
                     <th>SL No</th>
-                    <th>Type of Complain</th>
-                    <th>Details</th>
+                    <th>Name</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
                 <tbody>
-                {% for complain in complain_List %}
+                {% for complain in complain_type_List %}
                 <tr>
                     <td>{{complain.id}}</td>
-                    <td>{{complain.details}}</td>
-                    <td>{{complain.complainType.name}}</td>
+                    <td>{{complain.name}}</td>
+
                     <td>
                         {% if complain.status == True %}
                             <i class="fas fa-circle green"></i>
@@ -48,8 +46,8 @@
                             <i class="fas fa-circle red"></i>
                         {% endif %}
                         </td>
-                    <td><a href="complain_edit/{{complain.id}}"><i class="far fa-edit"></i></a>
-                        <a href="complain_delete/{{complain.id}}"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a href="complainType_edit/{{complain.id}}"><i class="far fa-edit"></i></a>
+                        <a href="complainType_delete/{{complain.id}}"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 {% endfor %}
                 </tbody>

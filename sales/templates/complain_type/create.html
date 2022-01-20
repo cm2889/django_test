@@ -1,0 +1,25 @@
+
+{% include "header.html" %}
+
+<div class="Complain" xmlns="http://www.w3.org/1999/html">
+  <h2>Create Complain Type</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <div class="tex-label">
+        <label for="name">Name</label>
+      </div>
+      <div class="content_area">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input class="form-controls" type="text" id="name" name="name" placeholder="  name"/>
+        </div>
+        <div class="marginbt30 button">
+          <input class="button_green" type="submit" name="submit" value="Create"/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% include "footer.html" %}

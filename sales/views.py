@@ -110,29 +110,65 @@ def product_delete(request,pk):
 def complainList(request):
 
     complain_List=models.Complain.objects.all()
-    context = {'complain_List': complain_List}
+    complain_type=models.ComplainType.objects.all()
+    context = {'complain_List': complain_List,'complain_type':complain_type}
     return render(request,'complain/index.html',context)
 
 #Complain Create
 def complainCreate(request):
+    complain_type=models.ComplainType.objects.all()
+    context = {'complain_type':complain_type}
     if(request.method=="POST"):
         details=request.POST['details']
-        models.Complain.objects.create(details=details)
-    return render(request,'complain/create.html')
+        complainType_id=request.POST['complainType_id']
+        models.Complain.objects.create(details=details,complainType_id=complainType_id)
+        return redirect('/dashboard/complain-list')
+    else:
+        return render(request,'complain/create.html',context)
 #complain Edit
 def complain_edit(request,pk):
     Complain=models.Complain.objects.get(id=pk)
+    complain_type=models.ComplainType.objects.all()
 
     if(request.method=="POST"):
         details = request.POST.get('details')
+        complainType_id = request.POST.get('complainType_id')
         status = True if request.POST.get('status') else False
         current_time=datetime.datetime.now()
-        models.Complain.objects.filter(id=pk).update(details=details,
+        models.Complain.objects.filter(id=pk).update(details=details,complainType_id=complainType_id,
         status=status,updated_at=current_time)
         return redirect('/dashboard/complain-list')
 
-    return render(request,'complain/edit.html',{'Complain':Complain})
+    return render(request,'complain/edit.html',{'Complain':Complain,'complain_type':complain_type})
 #complain delete
 def complain_delete(request,pk):
     models.Complain.objects.filter(id=pk).delete()
     return redirect('/dashboard/complain-list')
+
+def complainTypeList(request):
+
+    complain_type_List=models.ComplainType.objects.all()
+    context = {'complain_type_List': complain_type_List}
+    return render(request,'complain_type/index.html',context)
+#complainTypeCreate
+def complainTypeCreate(request):
+    if(request.method=="POST"):
+        name=request.POST['name']
+        models.ComplainType.objects.create(name=name)
+    return render(request,'complain_type/create.html')
+#complainType_edit
+def complainType_edit(request,pk):
+    complain_type=models.ComplainType.objects.get(id=pk)
+
+    if(request.method=="POST"):
+        name = request.POST.get('name')
+        status = True if request.POST.get('status') else False
+        current_time=datetime.datetime.now()
+        models.ComplainType.objects.filter(id=pk).update(name=name,
+        status=status,updated_at=current_time)
+        return redirect('/dashboard/complainType-list')
+    return render(request,'complain_type/edit.html',{'complain_type':complain_type})
+#complainType_delete
+def complainType_delete(request,pk):
+    models.ComplainType.objects.filter(id=pk).delete()
+    return redirect('/dashboard/complainType-list')
